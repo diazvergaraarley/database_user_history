@@ -29,3 +29,4 @@ VALUES
 ('Cemento Gris 50kg',32000,1),
 ('Varilla 3/8',28000,1),
 ('Martillo',45000,2);
+
