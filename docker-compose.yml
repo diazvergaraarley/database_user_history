@@ -1,6 +1,7 @@
 services:
 
-  db:
+  postgres:
+
     image: postgres:${POSTGRES_VERSION}
     container_name: ${POSTGRES_CONTAINER_NAME}
     restart: always
@@ -10,12 +11,26 @@ services:
       POSTGRES_USER: ${POSTGRES_USER}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
 
-    volumes:
-      - postgres_data:/var/lib/postgresql
-
     ports:
       - "${POSTGRES_PORT}:5432"
 
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  mongo:
+
+    image: mongo:${MONGO_VERSION}
+    container_name: ${MONGO_CONTAINER_NAME}
+    restart: always
+
+    ports:
+      - "${MONGO_PORT}:27017"
+
+    volumes:
+      - mongo_data:/data/db
+
 volumes:
+
   postgres_data:
-    name: ${POSTGRES_VOLUME_NAME}
+
+  mongo_data:
